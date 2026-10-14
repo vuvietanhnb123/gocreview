@@ -1,0 +1,18 @@
+baseURL = "https://example.org/"
+languageCode = "vi-vn"
+title = "Góc Review & Săn Sale Công Nghệ"
+theme = "PaperMod"
+enableRobotsTXT = true
+
+[params]
+  env = "production"
+  description = "Tổng hợp đánh giá sản phẩm công nghệ và mã giảm giá mới nhất"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
