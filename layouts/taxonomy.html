@@ -1,0 +1,39 @@
+{{- define "main" }}
+{{- /* Category overview (/tags/): one card per term with icon, count, product thumbnails and latest post */}}
+<header class="page-header cat-hero">
+  <span class="cat-eyebrow">{{ len .Data.Terms }} danh mục · {{ len (where site.RegularPages "Section" "posts") }} bài review</span>
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}
+  <p class="post-description">{{ . }}</p>
+  {{- end }}
+</header>
+
+<div class="cat-grid">
+  {{- range .Data.Terms.ByCount }}
+  {{- $term := .Page }}
+  {{- $icon := $term.Params.icon | default "tag" }}
+  <a class="cat-card" href="{{ $term.RelPermalink }}">
+    <div class="cat-top">
+      <span class="cat-icon">{{ partial "cat-icon.html" $icon }}</span>
+      <span class="cat-count">{{ .Count }} bài</span>
+    </div>
+    <h2>{{ $term.LinkTitle }}</h2>
+    {{- with $term.Description }}
+    <p class="cat-desc">{{ . }}</p>
+    {{- end }}
+    <div class="cat-thumbs">
+      {{- range first 4 .Pages }}
+      <span class="cat-thumb">
+        {{- with .Params.cover.image }}<img src="{{ . }}" alt="" loading="lazy">
+        {{- else }}{{ partial "cat-icon.html" $icon }}{{ end -}}
+      </span>
+      {{- end }}
+    </div>
+    {{- with index .Pages 0 }}
+    <p class="cat-latest"><span>Mới nhất</span>{{ .Title }}</p>
+    {{- end }}
+    <span class="cat-cta">Xem tất cả →</span>
+  </a>
+  {{- end }}
+</div>
+{{- end }}{{/* end main */ -}}

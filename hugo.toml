@@ -1,18 +1,45 @@
 baseURL = "https://my-affiliate-web.pages.dev/"
 languageCode = "vi-vn"
+defaultContentLanguage = "vi"
 title = "Góc Review & Săn Sale Công Nghệ"
 theme = "PaperMod"
 enableRobotsTXT = true
+paginate = 12
 
 [params]
   env = "production"
-  description = "Tổng hợp đánh giá sản phẩm công nghệ và mã giảm giá mới nhất"
-  defaultTheme = "auto"
+  description = "Tổng hợp đánh giá đồ công nghệ, phụ kiện chính hãng và mã giảm giá Shopee mới nhất mỗi ngày"
+  defaultTheme = "light"
   ShowReadingTime = true
   ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
 
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+  # Khung Banner giới thiệu nổi bật ở đầu trang chủ
+  [params.homeInfoParams]
+    Title = "Chuyên Trang Đánh Giá & Săn Deal Công Nghệ"
+    Content = "Tổng hợp review khách quan các sản phẩm Tai nghe, Bàn phím cơ, Chuột Gaming, Phụ kiện chính hãng kèm **Voucher giảm giá sâu nhất hôm nay**."
+
+  [[params.socialIcons]]
+    name = "shopee"
+    url = "https://shopee.vn"
+
+# Thanh Menu điều hướng trên cùng
+[[menu.main]]
+  identifier = "home"
+  name = "Trang chủ"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Danh mục"
+  url = "/tags/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "archives"
+  name = "Deal mới nhất"
+  url = "/posts/"
+  weight = 30
